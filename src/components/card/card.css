@@ -7,7 +7,10 @@
   padding: 16px;
   margin: 16px 0;
 }
-
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+}
 .card-title {
   margin: 0;
   color: var(--card-title-color);

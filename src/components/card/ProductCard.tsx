@@ -1,18 +1,27 @@
 import React from 'react'
 import "./Card.css";
-import { IProduct } from '../../interfaces/Products';
+import { ProductWithDiscountedPrice } from '../../interfaces/Products';
+import { Spin, Card, Button, Skeleton } from 'antd';
+const { Meta } = Card;
 
 
-const ProductCard:React.FC<IProduct> = ({title,thumbnail,price}) => {
+const ProductCard: React.FC<ProductWithDiscountedPrice> = ({ title, thumbnail, price, loading, discounted_price }) => {
   return (
-    <div className="card">
-      {thumbnail ? <img src={thumbnail} alt={title} /> : null}
-      <h2 className="card-title">{title}</h2>
-      <p className="card-content">{price}</p>
-    </div>
+    <Card
+      hoverable
+      loading={loading}
+      cover={loading ? <Skeleton /> : <img alt={title} src={thumbnail} />}
+      actions={[<Button block type='primary'>add</Button>]}
+    >
+      <Meta title={title} description={`${price}  - ${discounted_price}`} />
+    </Card>
   );
-}
+  // ImageCard.tsx
 
+
+
+
+}
 export default ProductCard
 
 
