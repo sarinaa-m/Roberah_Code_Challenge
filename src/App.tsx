@@ -5,20 +5,10 @@ import { fetchProducts } from "./redux/actions/ProductListActions";
 import { AppDispatch } from "./redux/ConfigureStore";
 import { getProductsData } from "./redux/selectors/ProductListSelectors";
 import ProductCard from "./components/card/ProductCard";
+import Products from "./components/Products/Products";
 
 function App() {
-  const dispatch = useDispatch<AppDispatch>()
-  const { limit, products, total, loading } = useSelector(getProductsData)
-  useEffect(() => {
-    dispatch(fetchProducts())
-  }, [])
-
-  return products.map((product) => (
-    <ProductCard
-      price={product.price} key={product.id} thumbnail={product.thumbnail} title={product.title}
-      discounted_price={product.discountPercentage}></ProductCard>
-
-  ));
+  return <Products />
 }
 
 export default App;

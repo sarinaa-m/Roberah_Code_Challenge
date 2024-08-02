@@ -6,10 +6,10 @@ const productSlice = (state: RootState) => state.product;
 
 export const getProductsData = createSelector(
   productSlice,
-  (app: RootState["product"]) => ({
-    products: app.data.products,
-    limit: app.data.limit,
-    total: app.data.total,
-    loading: app.loading,
+  (product: RootState["product"]) => ({
+    products: product.data.products,
+    limit: product.data.limit,
+    total: product.data.total,
+    loading: product.loading,
   })
 );

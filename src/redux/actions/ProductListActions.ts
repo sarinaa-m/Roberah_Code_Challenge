@@ -1,18 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { IProductListData } from "../../interfaces/Products";
+import { IProductListData, IProductListDataResponseApi } from "../../interfaces/Products";
 import DataProvider from "../../api/DataProvider";
 
 export const fetchProducts = createAsyncThunk(
   "product/fetchProducts",
-  async (_, thunkAPI: any) => {
+  async (payload: { limit: number; skip: number }, thunkAPI: any) => {
     try {
-      const result: IProductListData = await DataProvider.getList(`products`);
-      debugger;
+      const result: IProductListDataResponseApi = await DataProvider.getList(
+        `products?limit=${payload.limit}&skip=${payload.skip}`
+      );
+
       return {
         products: [
           ...result?.products.map((product) => ({
             title: product.title,
             thumbnail: product.thumbnail,
+            description: product.description,
             price: product.price,
             discounted_price: +(
               product.price *
@@ -24,6 +27,7 @@ export const fetchProducts = createAsyncThunk(
         skip: result.skip,
         limit: result.limit,
       };
+      debugger
     } catch (error: any) {
       return thunkAPI.rejectWithValue(
         error?.response?.data?.message || error.message

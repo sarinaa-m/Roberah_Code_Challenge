@@ -2,9 +2,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { fetchProducts } from "../actions/ProductListActions";
 import { IProductList, IProductListData } from "../../interfaces/Products";
 
-
 const initialState: IProductList = {
-  loading: false,
+  loading: true,
   error: null,
   data: {
     limit: 0,
@@ -27,6 +26,7 @@ export const productSlice = createSlice({
       .addCase(
         fetchProducts.fulfilled,
         (state, action: PayloadAction<IProductListData>) => {
+          debugger
           state.data.products = action.payload.products;
           state.data.limit = action.payload.limit;
           state.data.skip = action.payload.skip;
