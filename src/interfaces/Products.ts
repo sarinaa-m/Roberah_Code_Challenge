@@ -2,6 +2,7 @@ export interface IProductList {
   loading: boolean;
   error: null | string | undefined;
   data: IProductListData;
+  search:string
 }
 
 export interface IProductListData {

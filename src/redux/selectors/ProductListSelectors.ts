@@ -13,3 +13,7 @@ export const getProductsData = createSelector(
     loading: product.loading,
   })
 );
+export const getSearchData = createSelector(
+  productSlice,
+  (product: RootState["product"]) => product.search
+);

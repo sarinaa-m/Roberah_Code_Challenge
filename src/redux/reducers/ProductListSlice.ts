@@ -11,12 +11,17 @@ const initialState: IProductList = {
     skip: 0,
     total: 0,
   },
+  search: "",
 };
 
 export const productSlice = createSlice({
   name: "product",
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchValue: (state, action) => {
+      state.search = action.payload;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -26,7 +31,6 @@ export const productSlice = createSlice({
       .addCase(
         fetchProducts.fulfilled,
         (state, action: PayloadAction<IProductListData>) => {
-          debugger
           state.data.products = action.payload.products;
           state.data.limit = action.payload.limit;
           state.data.skip = action.payload.skip;
@@ -41,6 +45,6 @@ export const productSlice = createSlice({
       }),
 });
 
-export const {} = productSlice.actions;
+export const { setSearchValue } = productSlice.actions;
 
 export default productSlice.reducer;

@@ -6,9 +6,13 @@ import { AppDispatch } from "./redux/ConfigureStore";
 import { getProductsData } from "./redux/selectors/ProductListSelectors";
 import ProductCard from "./components/card/ProductCard";
 import Products from "./components/Products/Products";
+import SearchBar from "./components/search/SearchBar";
 
 function App() {
-  return <Products />
+  return (<>
+    <SearchBar />
+    <Products />
+  </>)
 }
 
 export default App;
