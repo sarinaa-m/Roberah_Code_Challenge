@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../redux/ConfigureStore';
 import { fetchProducts } from '../../redux/actions/ProductListActions';
 import { setSearchValue } from '../../redux/reducers/ProductListSlice';
-import { HeartOutlined, HeartTwoTone } from '@ant-design/icons';
+import { HeartOutlined } from '@ant-design/icons';
 import { getBudget } from '../../redux/selectors/ProductListSelectors';
-import BudgetList from '../shared/budgetList';
+import BudgetList from '../shared/BudgetList';
+
 
 const { Search } = Input
 
@@ -40,7 +41,9 @@ const SearchBar = () => {
                         placement='bottomLeft'
                     >
                         <Badge size='small' count={budget}>
-                            <HeartOutlined />
+                            <div>
+                                <HeartOutlined style={{ cursor: "pointer" }} />
+                            </div>
                         </Badge>
                     </Popover>
                 </Flex>

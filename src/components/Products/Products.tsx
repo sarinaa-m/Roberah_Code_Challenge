@@ -13,8 +13,8 @@ const Products = () => {
   const dispatch = useDispatch<AppDispatch>()
   const { products, total, loading } = useSelector(getProductsData)
   const searchValue = useSelector(getSearchData)
-  const [currentPage, setCurrentPage] = useState(1);
-  const [skipCount, setSkipCount] = useState(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [skipCount, setSkipCount] = useState<number>(1);
 
 
   const handleChange = (page: number) => {
@@ -33,7 +33,12 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(fetchProducts({ search: searchValue, limit: 4, skip: skipCount }))
-  }, [])
+    return () => {
+      setCurrentPage(1)
+    }
+  }, [skipCount])
+
+
 
 
   return (
