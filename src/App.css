@@ -6,3 +6,7 @@
 .ant-input-group-wrapper {
   width: 20%;
 }
+
+.ant-card-cover{
+  min-height: 362px;
+}

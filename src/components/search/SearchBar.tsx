@@ -1,10 +1,10 @@
 import { Col, Input, Row } from 'antd'
-import React from 'react'
 import { debounce } from "lodash";
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../redux/ConfigureStore';
 import { fetchProducts } from '../../redux/actions/ProductListActions';
 import { setSearchValue } from '../../redux/reducers/ProductListSlice';
+
 const { Search } = Input
 
 const SearchBar = () => {
@@ -15,7 +15,7 @@ const SearchBar = () => {
     }, 500)
     return (
         <Row>
-            <Col span={24} style={{ borderBottom: '1px solid black', padding: '24px' }}>
+            <Col span={24} className='searchBar-wrapper' >
                 <Search
                     onSearch={(e) => {
                         debounceOnSearch(e)
@@ -23,6 +23,8 @@ const SearchBar = () => {
                     onChange={(e) => {
                         debounceOnSearch(e)
                     }}
+                    allowClear
+                    placeholder='Search your product'
                 />
             </Col>
 

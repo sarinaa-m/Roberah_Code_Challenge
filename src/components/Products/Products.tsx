@@ -25,21 +25,28 @@ const Products = () => {
   }, [])
 
   return (<div className="card-wrapper" style={{ padding: '20px' }}>
-    <Row gutter={[16, 16]}>
-      {products.map((product, index) => (
-        <Col key={index} span={6}>
-          <ProductCard id={product.id} price={product.price} key={product.id} thumbnail={product.thumbnail} title={product.title}
-            discounted_price={product.discounted_price} loading={loading} />
-        </Col>
-      ))}
-    </Row>
-    <Pagination
-      current={currentPage}
-      pageSize={4}
-      total={total}
-      onChange={handleChange}
-      style={{ textAlign: 'center', marginTop: '20px' }}
-    />
+    {total > 0 ?
+      <>
+        <Row gutter={[16, 16]}>
+          {products.map((product, index) => (
+            <Col key={index} span={6}>
+              <ProductCard id={product.id} price={product.price} key={product.id} thumbnail={product.thumbnail} title={product.title}
+                discounted_price={product.discounted_price} loading={loading} />
+            </Col>
+          ))}
+        </Row>
+        <Pagination
+          current={currentPage}
+          pageSize={4}
+          total={total}
+          onChange={handleChange}
+          showSizeChanger={false}
+          style={{ textAlign: 'center', marginTop: '20px' }}
+        /> </> :
+      <h1>No Data</h1>
+
+    }
+
   </div>
   )
 }
