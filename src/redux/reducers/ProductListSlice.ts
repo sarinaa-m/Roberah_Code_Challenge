@@ -12,6 +12,7 @@ const initialState: IProductList = {
     total: 0,
   },
   search: "",
+  skipCount: 0,
 };
 
 export const productSlice = createSlice({
@@ -20,6 +21,9 @@ export const productSlice = createSlice({
   reducers: {
     setSearchValue: (state, action) => {
       state.search = action.payload;
+    },
+    setSkipCount: (state, action) => {
+      state.skipCount = action.payload;
     },
   },
   extraReducers: (builder) =>
@@ -45,6 +49,6 @@ export const productSlice = createSlice({
       }),
 });
 
-export const { setSearchValue } = productSlice.actions;
+export const { setSearchValue, setSkipCount } = productSlice.actions;
 
 export default productSlice.reducer;

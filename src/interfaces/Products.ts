@@ -3,6 +3,7 @@ export interface IProductList {
   error: null | string | undefined;
   data: IProductListData;
   search: string;
+  skipCount: number;
 }
 export interface IProductListData {
   products: ProductWithDiscountedPrice[];

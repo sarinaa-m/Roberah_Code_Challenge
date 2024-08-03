@@ -1,0 +1,15 @@
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  .card-title {
+    margin: 0;
+    color: var(--card-title-color);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    margin-bottom: 16px;
+  }
+  .ant-card-cover {
+    min-height: 362px;
+  }
+}

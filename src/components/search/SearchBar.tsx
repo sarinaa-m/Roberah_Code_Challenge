@@ -10,8 +10,9 @@ const { Search } = Input
 const SearchBar = () => {
     const dispatch = useDispatch<AppDispatch>()
     const debounceOnSearch = debounce((e: any) => {
-        dispatch(setSearchValue(e.target.value))
-        dispatch(fetchProducts({ search: e.target.value, limit: 4, skip: 0 }))
+        const searchValue = typeof e === "string" ? e : e.target.value;
+        dispatch(setSearchValue(searchValue))
+        dispatch(fetchProducts({ search: searchValue, limit: 4, skip: 0 }))
     }, 500)
     return (
         <Row>

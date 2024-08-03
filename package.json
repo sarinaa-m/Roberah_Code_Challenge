@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "@ant-design/icons": "^5.4.0",
     "@reduxjs/toolkit": "^2.2.7",
+    "@svgr/webpack": "^8.1.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/user-event": "^14.5.2",
@@ -29,6 +31,7 @@
     "sass": "^1.77.8",
     "typescript": "^5.5.4",
     "vite": "^4.3.9",
+    "vite-plugin-svgr": "^4.2.0",
     "vitest": "^2.0.5"
   },
   "name": "roob-frontend-test-v1",

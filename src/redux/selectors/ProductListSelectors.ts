@@ -17,3 +17,7 @@ export const getSearchData = createSelector(
   productSlice,
   (product: RootState["product"]) => product.search
 );
+export const getSkipCount = createSelector(
+  productSlice,
+  (product: RootState["product"]) => product.skipCount
+);
