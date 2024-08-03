@@ -2,10 +2,7 @@ import Products from "./components/Products/Products";
 import SearchBar from "./components/search/SearchBar";
 
 function App() {
-  return (<>
-    <SearchBar />
-    <Products />
-  </>)
+  return (<Products />)
 }
 
 export default App;

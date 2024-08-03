@@ -11,7 +11,7 @@ import BudgetList from '../shared/BudgetList';
 
 const { Search } = Input
 
-const SearchBar = () => {
+const SearchBar = ({onSearchItem}:any) => {
     const dispatch = useDispatch<AppDispatch>()
     const budget = useSelector(getBudget)
     const debounceOnSearch = debounce((e: any) => {
@@ -25,10 +25,13 @@ const SearchBar = () => {
                 <Search
                     onSearch={(e) => {
                         debounceOnSearch(e)
+                        onSearchItem()
                     }}
                     onChange={(e) => {
                         debounceOnSearch(e)
+                        onSearchItem()
                     }}
+                    
                     allowClear
                     placeholder='Search your product'
                 />

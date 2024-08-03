@@ -6,6 +6,7 @@ import { fetchProducts } from '../../redux/actions/ProductListActions'
 import ProductCard from '../card/ProductCard'
 import { Pagination, Row, Col, Spin, Flex } from 'antd';
 import EmptyScreen from '../shared/EmptyScreen'
+import SearchBar from '../search/SearchBar'
 
 
 
@@ -33,46 +34,50 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(fetchProducts({ search: searchValue, limit: 4, skip: skipCount }))
-    return () => {
-      setCurrentPage(1)
-    }
+
   }, [skipCount])
 
-
+  const onSearch = () => {
+    setCurrentPage(1)
+  }
 
 
   return (
-    <div className="card-wrapper" style={{ padding: '20px' }}>
-      {loading
-        ?
-        <Flex className='spin-container' align='center' justify='center'>
-          <Spin size='large' />
-        </Flex>
-        : total > 0 ?
-          <>
-            <Row gutter={[16, 16]}>
-              {products.map((product, index) => (
-                <Col key={index} span={6}>
-                  <ProductCard id={product.id} price={product.price} key={product.id} thumbnail={product.thumbnail} title={product.title}
-                    discounted_price={product.discounted_price} loading={loading} />
-                </Col>
-              ))}
-            </Row>
-            <Pagination
-              current={currentPage}
-              pageSize={4}
-              total={total}
-              onChange={(page) => handleChange(page)}
-              showSizeChanger={false}
-              className='pagination'
-            />
-          </>
-          :
-          <EmptyScreen />
+    <>
+      <SearchBar onSearchItem={onSearch} />
+      <div className="card-wrapper" style={{ padding: '20px' }}>
+        {loading
+          ?
+          <Flex className='spin-container' align='center' justify='center'>
+            <Spin size='large' />
+          </Flex>
+          : total > 0 ?
+            <>
+              <Row gutter={[16, 16]}>
+                {products.map((product, index) => (
+                  <Col key={index} span={6}>
+                    <ProductCard id={product.id} price={product.price} key={product.id} thumbnail={product.thumbnail} title={product.title}
+                      discounted_price={product.discounted_price} loading={loading} />
+                  </Col>
+                ))}
+              </Row>
+              <Pagination
+                current={currentPage}
+                pageSize={4}
+                total={total}
+                onChange={(page) => handleChange(page)}
+                showSizeChanger={false}
+                className='pagination'
+              />
+            </>
+            :
+            <EmptyScreen />
 
-      }
+        }
 
-    </div>
+      </div>
+    </>
+
   )
 }
 
