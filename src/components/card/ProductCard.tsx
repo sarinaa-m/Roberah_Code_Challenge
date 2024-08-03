@@ -46,7 +46,7 @@ const ProductCard: React.FC<ProductWithDiscountedPrice> = ({ id, title, thumbnai
       ]}
     >
       <Meta
-        title={<div className='card-title'>{title}</div>}
+        title={<div className='text-wrapper'>{title}</div>}
         description={
           <PriceDisplay
             originalPrice={price}

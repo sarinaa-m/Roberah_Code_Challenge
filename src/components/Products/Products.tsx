@@ -20,20 +20,20 @@ const Products = () => {
 
   const handleChange = (page: number) => {
     if (page < currentPage) {
-      const previousPage = skipCount - (4 * (currentPage - page))
+      const previousPage = skipCount - (6 * (currentPage - page))
       setSkipCount(previousPage)
-      dispatch(fetchProducts({ search: searchValue, limit: 4, skip: previousPage }))
+      dispatch(fetchProducts({ search: searchValue, limit: 6, skip: previousPage }))
     } else {
-      const NextPage = (4 * page) - 4
+      const NextPage = (6 * page) - 6
       setSkipCount(NextPage)
-      dispatch(fetchProducts({ search: searchValue, limit: 4, skip: NextPage }))
+      dispatch(fetchProducts({ search: searchValue, limit: 6, skip: NextPage }))
 
     }
     setCurrentPage(page);
   };
 
   useEffect(() => {
-    dispatch(fetchProducts({ search: searchValue, limit: 4, skip: skipCount }))
+    dispatch(fetchProducts({ search: searchValue, limit: 6, skip: skipCount }))
 
   }, [skipCount])
 
@@ -55,7 +55,7 @@ const Products = () => {
             <>
               <Row gutter={[16, 16]}>
                 {products.map((product, index) => (
-                  <Col key={index} span={6}>
+                  <Col key={index} span={4}>
                     <ProductCard id={product.id} price={product.price} key={product.id} thumbnail={product.thumbnail} title={product.title}
                       discounted_price={product.discounted_price} loading={loading} />
                   </Col>
@@ -63,7 +63,7 @@ const Products = () => {
               </Row>
               <Pagination
                 current={currentPage}
-                pageSize={4}
+                pageSize={6}
                 total={total}
                 onChange={(page) => handleChange(page)}
                 showSizeChanger={false}

@@ -3,7 +3,10 @@
   padding: 24px;
   display: flex;
   align-items: center;
+  .ant-input-group-wrapper {
+    width: 50%;
+  }
 }
 .ant-popover {
-width: 350px;
+  width: 350px;
 }
