@@ -29,7 +29,7 @@
     "sass": "^1.77.8",
     "typescript": "^5.5.4",
     "vite": "^4.3.9",
-    "vitest": "^0.32.4"
+    "vitest": "^2.0.5"
   },
   "name": "roob-frontend-test-v1",
   "private": true,
