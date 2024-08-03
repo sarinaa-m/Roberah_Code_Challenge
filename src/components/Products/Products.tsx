@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch } from '../../redux/ConfigureStore'
-import { getProductsData, getSearchData, getSkipCount } from '../../redux/selectors/ProductListSelectors'
+import { getProductsData, getSearchData } from '../../redux/selectors/ProductListSelectors'
 import { fetchProducts } from '../../redux/actions/ProductListActions'
 import ProductCard from '../card/ProductCard'
 import { Pagination, Row, Col, Spin, Flex } from 'antd';
 import EmptyScreen from '../shared/EmptyScreen'
-import { setSkipCount } from '../../redux/reducers/ProductListSlice'
 
 
 
@@ -14,18 +13,18 @@ const Products = () => {
   const dispatch = useDispatch<AppDispatch>()
   const { products, total, loading } = useSelector(getProductsData)
   const searchValue = useSelector(getSearchData)
-  const skipCount = useSelector(getSkipCount)
   const [currentPage, setCurrentPage] = useState(1);
+  const [skipCount, setSkipCount] = useState(1);
 
 
   const handleChange = (page: number) => {
     if (page < currentPage) {
       const previousPage = skipCount - (4 * (currentPage - page))
-      dispatch(setSkipCount(previousPage))
+      setSkipCount(previousPage)
       dispatch(fetchProducts({ search: searchValue, limit: 4, skip: previousPage }))
     } else {
       const NextPage = (4 * page) - 4
-      dispatch(setSkipCount(NextPage))
+      setSkipCount(NextPage)
       dispatch(fetchProducts({ search: searchValue, limit: 4, skip: NextPage }))
 
     }

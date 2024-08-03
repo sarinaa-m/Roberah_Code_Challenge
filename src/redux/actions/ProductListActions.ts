@@ -27,6 +27,7 @@ export const fetchProducts = createAsyncThunk(
               product.price *
               (1 - product.discountPercentage / 100)
             ).toFixed(2),
+            id:product.id
           })),
         ],
         total: result.total,

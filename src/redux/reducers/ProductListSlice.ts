@@ -12,7 +12,8 @@ const initialState: IProductList = {
     total: 0,
   },
   search: "",
-  skipCount: 0,
+  budget: 0,
+  budgetList: [],
 };
 
 export const productSlice = createSlice({
@@ -22,8 +23,20 @@ export const productSlice = createSlice({
     setSearchValue: (state, action) => {
       state.search = action.payload;
     },
-    setSkipCount: (state, action) => {
-      state.skipCount = action.payload;
+    setBudget: (state, action) => {
+      state.budget = action.payload;
+    },
+    setBudgetList: (state, action) => {
+      state.budgetList = [...state.budgetList, ...action.payload];
+    },
+    RemoveFromBudgetList: (state, action: PayloadAction<{ id: number }>) => {
+      const budgetList = [...state.budgetList];
+      const index = budgetList.findIndex((x) => x.id === action.payload.id);
+      if (index > -1) {
+        budgetList.splice(index, 1);
+      }
+      state.budgetList = budgetList;
+      state.budget = state.budget - 1;
     },
   },
   extraReducers: (builder) =>
@@ -49,6 +62,11 @@ export const productSlice = createSlice({
       }),
 });
 
-export const { setSearchValue, setSkipCount } = productSlice.actions;
+export const {
+  setSearchValue,
+  setBudget,
+  setBudgetList,
+  RemoveFromBudgetList,
+} = productSlice.actions;
 
 export default productSlice.reducer;

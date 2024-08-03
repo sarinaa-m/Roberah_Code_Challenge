@@ -3,8 +3,16 @@ export interface IProductList {
   error: null | string | undefined;
   data: IProductListData;
   search: string;
-  skipCount: number;
+  budget: number;
+  budgetList: IBudgetList[];
 }
+export interface IBudgetList {
+  imgUrl: string;
+  title: string;
+  price: string;
+  id: number;
+}
+
 export interface IProductListData {
   products: ProductWithDiscountedPrice[];
   total: number;

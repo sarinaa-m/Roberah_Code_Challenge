@@ -17,7 +17,12 @@ export const getSearchData = createSelector(
   productSlice,
   (product: RootState["product"]) => product.search
 );
-export const getSkipCount = createSelector(
+
+export const getBudget = createSelector(
   productSlice,
-  (product: RootState["product"]) => product.skipCount
+  (product: RootState["product"]) => product.budget
+);
+export const getBudgetList = createSelector(
+  productSlice,
+  (product: RootState["product"]) => product.budgetList
 );

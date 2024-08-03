@@ -12,8 +12,8 @@ html {
     }
   }
 }
-
-.ant-input-group-wrapper {
-  width: 20%;
+.text-wrapper {
+  max-width: 210px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
