@@ -13,3 +13,16 @@ export const getProductsData = createSelector(
     loading: product.loading,
   })
 );
+export const getSearchData = createSelector(
+  productSlice,
+  (product: RootState["product"]) => product.search
+);
+
+export const getBudget = createSelector(
+  productSlice,
+  (product: RootState["product"]) => product.budget
+);
+export const getBudgetList = createSelector(
+  productSlice,
+  (product: RootState["product"]) => product.budgetList
+);

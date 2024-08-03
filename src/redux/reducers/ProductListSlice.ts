@@ -11,12 +11,31 @@ const initialState: IProductList = {
     skip: 0,
     total: 0,
   },
+  search: "",
+  budget: 0,
+  budgetList: [],
 };
 
 export const productSlice = createSlice({
   name: "product",
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchValue: (state, action) => {
+      state.search = action.payload;
+    },
+    setBudget: (state, action) => {
+      state.budget = action.payload;
+    },
+    setBudgetList: (state, action) => {
+      state.budgetList = [...state.budgetList, ...action.payload];
+    },
+    RemoveFromBudgetList: (state, action: PayloadAction<{ id: number }>) => {
+      state.budgetList = state.budgetList.filter(
+        (item) => item.id !== action.payload.id
+      );
+      state.budget = state.budget - 1;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -26,7 +45,6 @@ export const productSlice = createSlice({
       .addCase(
         fetchProducts.fulfilled,
         (state, action: PayloadAction<IProductListData>) => {
-          debugger
           state.data.products = action.payload.products;
           state.data.limit = action.payload.limit;
           state.data.skip = action.payload.skip;
@@ -41,6 +59,11 @@ export const productSlice = createSlice({
       }),
 });
 
-export const {} = productSlice.actions;
+export const {
+  setSearchValue,
+  setBudget,
+  setBudgetList,
+  RemoveFromBudgetList,
+} = productSlice.actions;
 
 export default productSlice.reducer;

@@ -2,6 +2,15 @@ export interface IProductList {
   loading: boolean;
   error: null | string | undefined;
   data: IProductListData;
+  search: string;
+  budget: number;
+  budgetList: IBudgetList[];
+}
+export interface IBudgetList {
+  imgUrl: string;
+  title: string;
+  price: string;
+  id: number;
 }
 
 export interface IProductListData {
@@ -10,10 +19,6 @@ export interface IProductListData {
   skip: number;
   limit: number;
 }
-export type IProductListDataResponseApi = Omit<IProductListData, "products"> & {
-  products: IProduct[];
-};
-
 export interface IProduct {
   id: number;
   title: string;
@@ -23,7 +28,9 @@ export interface IProduct {
   description: string;
 }
 
-interface IProductResponseApi {}
+export type IProductListDataResponseApi = Omit<IProductListData, "products"> & {
+  products: IProduct[];
+};
 
 export type ProductWithDiscountedPrice = Omit<
   IProduct,

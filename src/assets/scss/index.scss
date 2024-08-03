@@ -1,0 +1,19 @@
+@import "./components/index.scss";
+
+html {
+  body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    #root {
+      margin: 0;
+      width: 100%;
+      height: 100vh;
+    }
+  }
+}
+.text-wrapper {
+  max-width: 210px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,14 +1,25 @@
 {
   "dependencies": {
+    "@ant-design/icons": "^5.4.0",
     "@reduxjs/toolkit": "^2.2.7",
+    "@svgr/webpack": "^8.1.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.12",
+    "@types/lodash": "^4.17.7",
     "antd": "^5.19.4",
     "axios": "^1.7.3",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^9.1.2"
+    "react-redux": "^9.1.2",
+    "ts-jest": "^29.2.4"
   },
   "devDependencies": {
-    "@testing-library/react": "^14.0.0",
+    "@testing-library/react": "^16.0.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.0.0",
@@ -17,9 +28,11 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
     "prop-types": "^15.8.1",
+    "sass": "^1.77.8",
     "typescript": "^5.5.4",
     "vite": "^4.3.9",
-    "vitest": "^0.32.4"
+    "vite-plugin-svgr": "^4.2.0",
+    "vitest": "^2.0.5"
   },
   "name": "roob-frontend-test-v1",
   "private": true,
