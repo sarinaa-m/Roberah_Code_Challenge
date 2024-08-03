@@ -4,29 +4,28 @@ import { getBudgetList } from '../../redux/selectors/ProductListSelectors'
 import { Avatar, List } from 'antd'
 import DeleteButton from './DeleteButton'
 import { RemoveFromBudgetList } from '../../redux/reducers/ProductListSlice'
-import { IBudgetList } from '../../interfaces/Products'
 
 const BudgetList = () => {
     const dispatch = useDispatch()
     const budgetList = useSelector(getBudgetList)
-    console.log(budgetList, "budgetList");
+
     const onDeleteBudgetItem = (id: number) => {
-        debugger
         dispatch(RemoveFromBudgetList({ id }))
     }
-    return (
 
+    return (
         <List
             itemLayout="horizontal"
             dataSource={budgetList}
             renderItem={(item: any, index) => (
                 <List.Item
-                    actions={[<DeleteButton
-                        item={item.id}
-                        onDeleteConfirm={() => {
-                            onDeleteBudgetItem(item.id);
-                        }}
-                    />]}>
+                    actions={
+                        [<DeleteButton
+                            item={item.id}
+                            onDeleteConfirm={() => {
+                                onDeleteBudgetItem(item.id);
+                            }}
+                        />]}>
                     <List.Item.Meta
                         avatar={<Avatar src={item.imgUrl} />}
                         title={<div className='text-wrapper'>{item.title}</div>}

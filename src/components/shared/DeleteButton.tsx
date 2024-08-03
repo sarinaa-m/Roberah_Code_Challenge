@@ -7,13 +7,7 @@ interface IDeleteButton {
   onDeleteConfirm: (item: IBudgetList) => void;
 
 }
-const DeleteButton = ({
-  item,
-  onDeleteConfirm,
-
-}: IDeleteButton) => {
-
-
+const DeleteButton = ({ item, onDeleteConfirm }: IDeleteButton) => {
   return (
     <Button
       onClick={() => onDeleteConfirm(item)}
@@ -21,7 +15,6 @@ const DeleteButton = ({
       type="link"
       danger
     >
-      {/* {isResponsive ? "" : <span className="px-1">{t("actions.delete")}</span>} */}
     </Button>
   );
 };

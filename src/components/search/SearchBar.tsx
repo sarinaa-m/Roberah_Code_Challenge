@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../redux/ConfigureStore';
 import { fetchProducts } from '../../redux/actions/ProductListActions';
 import { setSearchValue } from '../../redux/reducers/ProductListSlice';
-import { HeartTwoTone } from '@ant-design/icons';
+import { HeartOutlined, HeartTwoTone } from '@ant-design/icons';
 import { getBudget } from '../../redux/selectors/ProductListSelectors';
 import BudgetList from '../shared/budgetList';
 
@@ -36,11 +36,11 @@ const SearchBar = () => {
                 <Flex justify='flex-end'>
                     <Popover
                         trigger="click"
-                        content={<BudgetList />} //list of majors
+                        content={<BudgetList />}
                         placement='bottomLeft'
                     >
-                        <Badge count={budget}>
-                            <HeartTwoTone />
+                        <Badge size='small' count={budget}>
+                            <HeartOutlined />
                         </Badge>
                     </Popover>
                 </Flex>

@@ -27,14 +27,13 @@ export const fetchProducts = createAsyncThunk(
               product.price *
               (1 - product.discountPercentage / 100)
             ).toFixed(2),
-            id:product.id
+            id: product.id,
           })),
         ],
         total: result.total,
         skip: result.skip,
         limit: result.limit,
       };
-      debugger;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(
         error?.response?.data?.message || error.message

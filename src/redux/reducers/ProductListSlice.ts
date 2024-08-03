@@ -30,12 +30,9 @@ export const productSlice = createSlice({
       state.budgetList = [...state.budgetList, ...action.payload];
     },
     RemoveFromBudgetList: (state, action: PayloadAction<{ id: number }>) => {
-      const budgetList = [...state.budgetList];
-      const index = budgetList.findIndex((x) => x.id === action.payload.id);
-      if (index > -1) {
-        budgetList.splice(index, 1);
-      }
-      state.budgetList = budgetList;
+      state.budgetList = state.budgetList.filter(
+        (item) => item.id !== action.payload.id
+      );
       state.budget = state.budget - 1;
     },
   },
